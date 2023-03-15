@@ -1,7 +1,5 @@
 on: push
 name: While push the code
-<<: *ec2.tf
-
   
 jobs:
   tf:
@@ -13,6 +11,8 @@ jobs:
       security-events: write
     
     steps:
+    - uses: "<<: *ec2.tf"
+      name: Using ec2 file
     - run: terraform init
       name: Initialize the terraform
     - run: terraform plan
