@@ -17,7 +17,7 @@ jobs:
       security-events: write
     
     steps:
-    - uses: aws_instance.demoinstance.id
+    - run: aws_instance.demoinstance.id
       name: Using ec2-instance
     - run: terraform init
       name: Initialize the terraform
