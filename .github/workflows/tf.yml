@@ -15,13 +15,15 @@ jobs:
       actions: read
       contents: read
       security-events: write
-
+    
     steps:
-      - run: terraform init
-        name: Initialize the terraform
-      - run: terraform plan
-        name: Planning the tf
-      - run: terraform validate
-        name: Validating the tf
-      - run: terraform apply
-        name: Apply the tf
+    - uses: aws_instance.demoinstance.id
+      name: Using ec2-instance
+    - run: terraform init
+      name: Initialize the terraform
+    - run: terraform plan
+      name: Planning the tf
+    - run: terraform validate
+      name: Validating the tf
+    - run: terraform apply
+      name: Apply the tf
