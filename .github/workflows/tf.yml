@@ -11,13 +11,8 @@ jobs:
       security-events: write
     
     steps:
-    - run: AWS-Infra-TF
-      name: Using ec2 file
-    - run: terraform init
-      name: Initialize the terraform
-    - run: terraform plan
-      name: Planning the tf
-    - run: terraform validate
-      name: Validating the tf
-    - run: terraform apply
-      name: Apply the tf
+    - run: |
+        cd AWS-Infra-TF
+        terraform init
+        terraform apply -auto-approve
+      name: Terraform apply
