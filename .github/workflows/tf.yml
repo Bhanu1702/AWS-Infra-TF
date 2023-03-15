@@ -11,7 +11,7 @@ jobs:
       security-events: write
     
     steps:
-    - run: ec2.tf
+    - run: AWS-Infra-TF
       name: Using ec2 file
     - run: terraform init
       name: Initialize the terraform
