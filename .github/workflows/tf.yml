@@ -1,16 +1,12 @@
-name: tf
+on: push
+name: While push the code
+<<: *ec2.tf
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   
 jobs:
   tf:
     name: Run tf
     runs-on: ubuntu-latest
-    <<: *ec2.tf
     permissions:
       actions: read
       contents: read
