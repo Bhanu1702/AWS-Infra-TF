@@ -17,12 +17,11 @@ jobs:
       security-events: write
 
     steps:
-      - uses: actions/checkout@v3
-        name: Checkout code
-      - run: |
-          tf publish \
-          --configuration Release \
-          --output out
-        name: Publish .tf files  
-
-      
+      - run: terraform init
+        name: Initialize the terraform
+      - run: terraform plan
+        name: Planning the tf
+      - run: terraform validate
+        name: Validating the tf
+      - run: terraform apply
+        name: Apply the tf
