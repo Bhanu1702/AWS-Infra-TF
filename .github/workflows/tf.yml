@@ -17,8 +17,6 @@ jobs:
       security-events: write
 
     steps:
-      - run: Clone repo
-        name: Cloning the repo
       - uses: actions/checkout@v3
         name: Checkout code
       - run: |
