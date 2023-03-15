@@ -6,12 +6,11 @@ on:
   pull_request:
     branches: [ "main" ]
   
-    <<: *ec2.tf
-
 jobs:
   tf:
     name: Run tf
     runs-on: ubuntu-latest
+    <<: *ec2.tf
     permissions:
       actions: read
       contents: read
