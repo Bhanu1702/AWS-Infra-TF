@@ -1,8 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: tf
 
 on:
@@ -15,7 +10,7 @@ on:
 
 jobs:
   tfsec:
-    name: Run tf sarif report
+    name: Run tf
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -23,16 +18,14 @@ jobs:
       security-events: write
 
     steps:
-      - name: Clone repo
-        uses: actions/checkout@v3
+      - run: Clone repo
+        name: Cloning the repo
+      - uses: actions/checkout@v3
+        name: Checkout code
+      - run: |
+          tf publish \
+          --configuration Release \
+          --output out
+        name: Publish .tf files  
 
-      - name: Run tfsec
-        uses: tf/tf-sarif-action@9a83b5c3524f825c020e356335855741fd02745f
-        with:
-          sarif_file: tf.sarif         
-
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          # Path to SARIF file relative to the root of the repository
-          sarif_file: tf.sarif  
+      
